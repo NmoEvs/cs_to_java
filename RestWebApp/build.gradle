@@ -1,0 +1,24 @@
+apply plugin: "java"
+// this adds the run task
+apply plugin: "application"
+
+// we're using the JDK 8
+sourceCompatibility = 1.8
+
+// the dependencies are retrieved at the default Maven Central Registry
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // the tests use Junit
+  testCompile "junit:junit:4.11"
+}
+
+// We want to report which tests are passed, skipped, and failed. In addition,
+// we want to report the standard output and error.
+test {
+  testLogging {
+      events "passed", "skipped", "failed", "standardOut", "standardError"
+  }
+}

@@ -1,0 +1,2 @@
+create table Event (id UUID not null, description varchar(255), eventDate timestamp, name varchar(255), version bigint, primary key (id));
+create table MetaData (id UUID not null, comment varchar(255), version bigint, event_id UUID not null, primary key (id));

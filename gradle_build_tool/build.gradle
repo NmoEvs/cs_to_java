@@ -1,0 +1,21 @@
+apply plugin: "java"
+apply plugin: "application"
+
+mainClassName = "Main"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    testCompile "junit:junit:4.11"
+}
+
+test {
+  testLogging {
+      events "passed", "skipped", "failed", "standardOut", "standardError"
+  }
+}
+

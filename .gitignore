@@ -1,0 +1,6 @@
+**/build
+**/.gradle
+**/*.iml
+**/gradle-wrapper.*
+**/gradlew
+**/gradlew.*

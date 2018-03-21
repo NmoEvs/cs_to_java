@@ -1,0 +1,33 @@
+image: euranova/docker-gradle
+
+test:
+  script:
+    - cd $CI_PROJECT_DIR
+    - rm -Rvf day_3
+    - for DIR in */; do
+    - cd $DIR
+    - echo ==========================================
+    - echo "Test $DIR"
+    - "[[ -f build.gradle ]] && gradle assemble check"
+    - echo ==========================================
+    - cd ..
+    - done
+  tags:
+    - generic-docker
+
+
+test_day_3:
+  variables:
+    POSTGRES_DB: webevents_test
+    POSTGRES_USER: webevents
+    POSTGRES_PASSWORD: webevents
+    POSTGRES_HOST: postgres
+    RABBITMQ_HOST: rabbitmq
+  services:
+    - postgres:9.5
+    - rabbitmq:3
+  script:
+    - cd day_3
+    - gradle assemble check
+  tags:
+    - generic-docker
